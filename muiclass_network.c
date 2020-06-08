@@ -811,7 +811,7 @@ ULONG i;
 								{
 								time_t rawtime;
 								struct tm *timeinfo;
-								StrToLong( (_ub_cs) args, &rawtime );
+								StrToLong( (_ub_cs) args, (LONG *)&rawtime );
 								timeinfo = localtime(&rawtime);
 								smp->smp_Date = dst;
 								strcpy( dst, asctime(timeinfo) );
@@ -827,7 +827,7 @@ ULONG i;
 			}
 		}
 		if( !TAB_IRCCOMMANDS[ i ].CMD_Name ) {
-			VPrintf( (_ub_cs) "!! Command is not in command table !!\n", &smp->smp_Command );
+			VPrintf( (_ub_cs) "!! Command %s is not in command table !!\n", (RAWARG)&smp->smp_Command );
 		}
 	}
 #if 1

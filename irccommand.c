@@ -37,6 +37,7 @@
 #include "muiclass_settingscolor.h"
 #include "version.h"
 
+#if USE_DUMPSMP
 /*************************************************************************/
 
 /* /// Dump_SMP()
@@ -62,6 +63,7 @@ static void Dump_SMP( struct ServerMessageParse *smp)
 	debug("# FromHost:  '%s'\n\n----------------------------\n", smp->smp_FromHost  );
 }
 /* \\\ */
+#endif
 
 /* /// IRCCMD_PrivMsg()
 **
@@ -270,10 +272,6 @@ static ULONG IRCCMD_Quit( Object *obj, struct Server *s, struct ServerMessagePar
 
 static ULONG IRCCMD_ChannelWebSiteIs( Object *obj, struct Server *s, struct ServerMessageParse *smp )
 {
-struct Channel *c;
-
-	c = (APTR) DoMethod( obj, MM_NETWORK_CHANNELFIND, s, smp->smp_Channel );
-
 	smp->smp_Pen = PEN_LOGINFO;
 	sprintf( &smp->smp_MessageBuffer[ strlen( smp->smp_MessageBuffer ) ], (char *)
 						LGS( MSG_MUICLASS_NETWORK_CHANNELWEBSITE_FORMAT  ),

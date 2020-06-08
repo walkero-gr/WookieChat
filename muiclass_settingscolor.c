@@ -416,7 +416,7 @@ char *str;
 	if( ( handle = Open( (_ub_cs) msg->Name, MODE_NEWFILE ) ) ) {
 		for( i = 0 ; TAB_CONFIGITEMS[ i ].GadgetID != -1 ; i++ ) {
 			str = (char *) MUIGetVar( mccdata->mcc_ClassObjects[ TAB_CONFIGITEMS[ i ].GadgetID ], TAB_CONFIGITEMS[ i ].Attr );
-			VFPrintf( handle, (_ub_cs) "%s\n", &str );
+			VFPrintf( handle, (_ub_cs) "%s\n", (RAWARG)&str );
 		}
 		Close( handle );
     }
