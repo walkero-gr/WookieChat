@@ -67,6 +67,7 @@ WID_QUICKSETUP,
 GID_AUDIO,
 GID_NETWORK,
 GID_CHATLOG,
+GID_HIDDENVGROUP,
 GID_LAST
 };
 
@@ -124,7 +125,7 @@ Object *objs[ GID_LAST ];
 				MUIA_Application_Window     , objs[ WID_QUICKSETUP    ] = WindowQuickSetupObject, End,
 				/* this is just a dummy to store/handle our non visible classes, without additional code */
 				MUIA_Application_Window     , WindowObject, MA_APPLICATION_CLASSID, -1,
-								WindowContents, VGroup,
+								WindowContents, objs[ GID_HIDDENVGROUP ] = VGroup,
 									Child   , objs[ GID_AUDIO   ] = AudioObject , End,
 									Child   , objs[ GID_NETWORK ] = NetworkObject , End,
 									Child   , objs[ GID_CHATLOG ] = ChatLogObject , End,
@@ -163,6 +164,13 @@ struct mccdata *mccdata = INST_DATA( cl, obj );
 	if( mccdata->mcc_DiskObject ) {
 		FreeDiskObject( mccdata->mcc_DiskObject );
 	}
+
+	/* this is a workaround for NULL pointer access at dispose time
+	 * dispose of network object via notifications goes back to UI objects which where alreday disposed.
+	 * dispose network object first, before UI is disposed. */
+	DoMethod(mccdata->mcc_ClassObjects[ GID_HIDDENVGROUP ], MUIM_Family_Remove, mccdata->mcc_ClassObjects[ GID_NETWORK ]);
+	DoMethod(mccdata->mcc_ClassObjects[ GID_NETWORK ], OM_DISPOSE);
+
 	return( DoSuperMethodA( cl, obj, msg ) );
 }
 /* \\\ */
