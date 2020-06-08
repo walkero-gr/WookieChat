@@ -305,14 +305,15 @@ struct NickEntry *ne;
 			se = NULL;
 			DoMethod( obj, MUIM_NList_GetEntry, i, &se );
 			if( se ) {
-				IPTR args[10];
+				IPTR args[3];
 				args[0] = (IPTR) se->se_Name;
 				args[1] = (IPTR) se->se_Address;
-				args[2] = (IPTR) se->se_Port;
-				args[3] = (IPTR) se->se_Password;
-				args[4] = (IPTR) se->se_Charset;
-				args[5] = (IPTR) ( ( se->se_Flags & SERVERENTRYF_AUTOCONNECT ) ? " CONNECT" : "" );
-				VFPrintf( handle, (_ub_cs)  "SERVER \"%s\" ADDRESS \"%s\" PORT %ld PASSWORD \"%s\" CHARSET \"%s\"%s\n", (RAWARG)args );
+				VFPrintf( handle, (_ub_cs)  "SERVER \"%s\" ADDRESS \"%s\"", (RAWARG)args );
+				VFPrintf( handle, (_ub_cs)  " PORT %ld", (RAWARG)&se->se_Port );
+				args[0] = (IPTR) se->se_Password;
+				args[1] = (IPTR) se->se_Charset;
+				args[2] = (IPTR) ( ( se->se_Flags & SERVERENTRYF_AUTOCONNECT ) ? " CONNECT" : "" );
+				VFPrintf( handle, (_ub_cs)  " PASSWORD \"%s\" CHARSET \"%s\"%s\n", (RAWARG)args );
 				for( ce = (APTR) se->se_ChannelList.lh_Head ; ce->ce_Succ ; ce = ce->ce_Succ ) {
 					args[0] = (IPTR) ce->ce_Name;
 					args[1] = (IPTR) ce->ce_Password;
