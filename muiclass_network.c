@@ -617,10 +617,11 @@ struct SendNode {
 static IPTR MM_ServerMessageSendMsg( struct IClass *cl, Object *obj, struct MP_NETWORK_SERVERMESSAGESENDMSG *msg )
 {
 struct SendNode *sn;
+LONG channamelen = msg->Channel ? strlen(msg->Channel->c_Name) : 0;
 
 	debug( "%s (%ld) %s() - Class: 0x%08lx Object: 0x%08lx \n", __FILE__, __LINE__, __func__, cl, obj );
 
-	if( ( sn = AllocVec( sizeof( struct SendNode ) + strlen( msg->Message ) + strlen( "PRIVMSG :" ) + strlen( msg->Channel->c_Name ) + 64, MEMF_ANY|MEMF_CLEAR ) )) {
+	if( ( sn = AllocVec( sizeof( struct SendNode ) + strlen( msg->Message ) + strlen( "PRIVMSG :" ) + channamelen + 64, MEMF_ANY|MEMF_CLEAR ) )) {
 		if( *msg->Message != '/' ) {
 			strcpy( sn->sn_Message, (char *) "PRIVMSG " );
 			strcat( sn->sn_Message, msg->Channel ? msg->Channel->c_Name : "" );
