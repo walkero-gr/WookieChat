@@ -604,10 +604,10 @@ struct MUI_PenSpec *penspec;
 
 
 #ifdef __AROS__
-IPTR NewObjectAROS( struct IClass *classPtr, UBYTE *classID, ULONG tag1, ... )
+IPTR NewObjectAROS( struct IClass *classPtr, UBYTE *classID, Tag tag1, ... )
 {
     AROS_SLOWSTACKTAGS_PRE(tag1)
-    retval = (IPTR) NewObject(classPtr, classID, AROS_SLOWSTACKTAGS_ARG(tag1));
+    retval = (IPTR) NewObjectA(classPtr, classID, AROS_SLOWSTACKTAGS_ARG(tag1));
     AROS_SLOWSTACKTAGS_POST
 }
 IPTR DoSuperNew(Class *cl, Object *obj, Tag tag1, ...)
