@@ -443,7 +443,7 @@ struct Server  *s;
 ** find output channel
 */
 		c = (APTR) DoMethod( mccdata->mcc_ClassObjects[ GID_NETWORK ], MM_NETWORK_CHANNELFIND, s, msg->ChannelName );
-		if( !c->c_Succ ) {
+		if( !c ) {
 			/* channel not found, so use server tab */
 			for( c = (APTR) s->s_ChannelList.lh_Head ; c->c_Succ ; c = c->c_Succ ) {
 				if( c->c_Flags & CHANNELF_SERVER ) {
@@ -451,7 +451,7 @@ struct Server  *s;
 				}
 			}
 		}
-		if( c->c_Succ ) {
+		if( c ) {
 			struct ChatLogEntry *cle;
 			cle = (APTR) DoMethod( mccdata->mcc_ClassObjects[ GID_CHATLOG ], MM_CHATLOG_ENTRYALLOC, c, msg->Pen, msg->Message );
 			DoMethod( mccdata->mcc_ClassObjects[ GID_CHATLOG ], MM_CHATLOG_WRITE, c, cle );
