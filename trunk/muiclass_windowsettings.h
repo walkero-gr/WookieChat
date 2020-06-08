@@ -36,8 +36,8 @@ MM_WINDOWSETTINGS_CANCEL,
 MA_WINDOWSETTINGS_VISUALCHANGE,
 };
 
-struct MP_WINDOWSETTINGS_READCONFIG  { ULONG MethodID; ULONG ObjectID; };
-struct MP_WINDOWSETTINGS_WRITECONFIG { ULONG MethodID; ULONG ObjectID; APTR Data; };
+struct MP_WINDOWSETTINGS_READCONFIG  { STACKED ULONG MethodID; STACKED ULONG ObjectID; };
+struct MP_WINDOWSETTINGS_WRITECONFIG { STACKED ULONG MethodID; STACKED ULONG ObjectID; STACKED APTR Data; };
 
 /*************************************************************************/
 
@@ -240,8 +240,8 @@ OID_WINDOWCHAT = 0x6000,
 
 ULONG   MCC_WindowSettings_InitClass( void );
 void    MCC_WindowSettings_DisposeClass( void );
-ULONG   GlobalReadConfig( ULONG objectid );
-ULONG   GlobalReadConfigObj( Object *obj, ULONG objectid );
+IPTR   GlobalReadConfig( ULONG objectid );
+IPTR   GlobalReadConfigObj( Object *obj, ULONG objectid );
 
 /*************************************************************************/
 

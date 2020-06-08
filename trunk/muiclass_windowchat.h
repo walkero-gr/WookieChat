@@ -45,17 +45,17 @@ MA_WINDOWCHAT_OBJECTNETWORK,
 MA_WINDOWCHAT_OBJECTQUIT,
 };
 
-struct MP_WINDOWCHAT_MENUSELECT         { ULONG MethodID; ULONG MenuID; };
+struct MP_WINDOWCHAT_MENUSELECT         { STACKED ULONG MethodID; STACKED ULONG MenuID; };
 
-struct MP_WINDOWCHAT_MESSAGERECEIVED    { ULONG MethodID; struct ChatLogEntry *ChatLogEntry; };
-struct MP_WINDOWCHAT_MESSAGEENTERED     { ULONG MethodID; };
-struct MP_WINDOWCHAT_CHANNELREMOVE      { ULONG MethodID; struct Channel *Channel; };
-struct MP_WINDOWCHAT_CHANNELADD         { ULONG MethodID; struct Channel *Channel; };
-struct MP_WINDOWCHAT_CHANNELCHANGE      { ULONG MethodID; };
-struct MP_WINDOWCHAT_CHANNELCHANGETOPIC { ULONG MethodID; struct Channel *Channel; };
-struct MP_WINDOWCHAT_CHANNELNICKREMOVE  { ULONG MethodID; struct Channel *Channel; struct ChatNickEntry *ChatNickEntry; };
-struct MP_WINDOWCHAT_CHANNELNICKADD     { ULONG MethodID; struct Channel *Channel; struct ChatNickEntry *ChatNickEntry; };
-struct MP_WINDOWCHAT_CHANNELISVISIBLE   { ULONG MethodID; struct Channel *Channel; };
+struct MP_WINDOWCHAT_MESSAGERECEIVED    { STACKED ULONG MethodID; STACKED struct ChatLogEntry *ChatLogEntry; };
+struct MP_WINDOWCHAT_MESSAGEENTERED     { STACKED ULONG MethodID; };
+struct MP_WINDOWCHAT_CHANNELREMOVE      { STACKED ULONG MethodID; STACKED struct Channel *Channel; };
+struct MP_WINDOWCHAT_CHANNELADD         { STACKED ULONG MethodID; STACKED struct Channel *Channel; };
+struct MP_WINDOWCHAT_CHANNELCHANGE      { STACKED ULONG MethodID; };
+struct MP_WINDOWCHAT_CHANNELCHANGETOPIC { STACKED ULONG MethodID; STACKED struct Channel *Channel; };
+struct MP_WINDOWCHAT_CHANNELNICKREMOVE  { STACKED ULONG MethodID; STACKED struct Channel *Channel; STACKED struct ChatNickEntry *ChatNickEntry; };
+struct MP_WINDOWCHAT_CHANNELNICKADD     { STACKED ULONG MethodID; STACKED struct Channel *Channel; STACKED struct ChatNickEntry *ChatNickEntry; };
+struct MP_WINDOWCHAT_CHANNELISVISIBLE   { STACKED ULONG MethodID; STACKED struct Channel *Channel; };
 
 /*************************************************************************/
 

@@ -170,7 +170,7 @@ struct TagItem *tstate;
 	debug( "%s (%ld) %s() - Class: 0x%08lx Object: 0x%08lx \n", __FILE__, __LINE__, __func__, cl, obj );
 
 	for( tstate = msg->ops_AttrList ; ( tag = NextTagItem( &tstate ) ) ; ) {
-		ULONG tidata = tag->ti_Data;
+		IPTR tidata = tag->ti_Data;
         switch( tag->ti_Tag ) {
 			case MA_CHATUSERLIST_OBJECTCHATCHANNELLIST:
 				mccdata->mcc_ClassObjects[ GID_CHATCHANNELLIST ] = (APTR) tidata;

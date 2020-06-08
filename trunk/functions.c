@@ -311,7 +311,7 @@ struct WBArg *wbarg;
 	if( !diskobj ) {
 		result = GetDiskObjectNew( name );
 	} else {
-		result  = (APTR)(ULONG) PutDiskObject( name, diskobj );
+		result  = (APTR)(IPTR) PutDiskObject( name, diskobj );
 	}
 	CurrentDir( lock );
 

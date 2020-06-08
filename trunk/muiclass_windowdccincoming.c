@@ -183,7 +183,7 @@ static struct Hook construct_hook = { { NULL,NULL },(ULONG(*)()) construct_func,
 
 /*************************************************************************/
 
-static ULONG OM_New( struct IClass *cl, Object *obj, struct opSet *msg UNUSED )
+static IPTR OM_New( struct IClass *cl, Object *obj, struct opSet *msg UNUSED )
 {
 Object *objs[ GID_LAST ];
 
@@ -238,9 +238,9 @@ Object *objs[ GID_LAST ];
 		//DoMethod( objs[ GID_ADD       ], MUIM_Notify, MUIA_Pressed            , FALSE, obj, 1, MM_WINDOWDCCINCOMING_ADD );
 		DoMethod( objs[ GID_REMOVE ], MUIM_Notify, MUIA_Pressed            , FALSE, objs[ GID_LIST ], 2, MUIM_NList_Remove, MUIV_NList_Remove_Selected );
 
-		return( (ULONG) obj );
+		return( (IPTR) obj );
     }
-	return( (ULONG) NULL );
+	return( (IPTR) NULL );
 }
 /* \\\ */
 /* /// MM_Add()

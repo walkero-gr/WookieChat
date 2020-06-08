@@ -77,15 +77,15 @@ struct ConfigItem {
 	ULONG GadgetID;
 	ULONG ObjectID;
 	ULONG Attr;
-	LONG  Default;
+	IPTR  Default;
 };
 
 static struct ConfigItem TAB_CONFIGITEMS[] = {
-	{ GID_REALNAME          , OID_SVR_REALNAME         , MUIA_String_Contents, (LONG) "" },
-	{ GID_USERNAME          , OID_SVR_USERNAME         , MUIA_String_Contents, (LONG) "" },
-	{ GID_RECONNECT         , OID_SVR_RECONNECT        , MUIA_String_Integer , (LONG) 7 },
-	{ GID_RECONNECTDELAY    , OID_SVR_RECONNECTDELAY   , MUIA_String_Integer , (LONG) 30 },
-	{ GID_DUPEDETECTION     , OID_SVR_DUPEDETECTION    , MUIA_Selected       , (LONG) 0 },
+	{ GID_REALNAME          , OID_SVR_REALNAME         , MUIA_String_Contents, (IPTR) "" },
+	{ GID_USERNAME          , OID_SVR_USERNAME         , MUIA_String_Contents, (IPTR) "" },
+	{ GID_RECONNECT         , OID_SVR_RECONNECT        , MUIA_String_Integer , (IPTR) 7 },
+	{ GID_RECONNECTDELAY    , OID_SVR_RECONNECTDELAY   , MUIA_String_Integer , (IPTR) 30 },
+	{ GID_DUPEDETECTION     , OID_SVR_DUPEDETECTION    , MUIA_Selected       , (IPTR) 0 },
 	{ -1,0,0,0 },
 };
 
@@ -282,7 +282,7 @@ ULONG i;
 
 	for( i = 0 ; TAB_CONFIGITEMS[ i ].GadgetID != -1 ; i++ ) {
 		if( TAB_CONFIGITEMS[ i ].ObjectID == msg->ObjectID ) {
-			return( (ULONG) MUIGetVar( mccdata->mcc_ClassObjects[ TAB_CONFIGITEMS[ i ].GadgetID ], TAB_CONFIGITEMS[ i ].Attr ) );
+			return( (IPTR) MUIGetVar( mccdata->mcc_ClassObjects[ TAB_CONFIGITEMS[ i ].GadgetID ], TAB_CONFIGITEMS[ i ].Attr ) );
 		}
 	}
 	return( 0 );

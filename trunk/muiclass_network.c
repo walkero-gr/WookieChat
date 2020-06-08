@@ -133,7 +133,7 @@ struct TagItem *tstate;
 	debug( "%s (%ld) %s() - Class: 0x%08lx Object: 0x%08lx \n", __FILE__, __LINE__, __func__, cl, obj );
 
 	for( tstate = msg->ops_AttrList ; ( tag = NextTagItem( &tstate ) ) ; ) {
-		ULONG tidata = tag->ti_Data;
+		IPTR tidata = tag->ti_Data;
         switch( tag->ti_Tag ) {
 			case MA_NETWORK_OBJECTSETTINGS:
 				mccdata->mcc_ClassObjects[ WID_SETTINGS ] = (APTR) tidata;
@@ -987,7 +987,7 @@ LONG waitsignals = *((ULONG*) msg->SignalMask );
 						}
 
 						while( ( *tmp == 0x0a || *tmp == 0x0d ) ) { tmp++; }
-						s->s_BufferFilled -= ( ((ULONG) tmp) - ((ULONG) s->s_Buffer) );
+						s->s_BufferFilled -= ( ((IPTR) tmp) - ((IPTR) s->s_Buffer) );
 						//debug("buffer fill %ld\n", s->s_BufferFilled );
 						if( s->s_BufferFilled < 0 ) {
 						//	  debug("WARN buffer fill %ld\n", s->s_BufferFilled );

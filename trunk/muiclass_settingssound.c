@@ -64,20 +64,20 @@ struct ConfigItem {
 	ULONG GadgetID;
 	ULONG ObjectID;
 	ULONG Attr;
-	LONG  Default;
+	IPTR  Default;
 };
 
 static struct ConfigItem TAB_CONFIGITEMS[] = {
-	{ GID_ENABLED           , OID_SND_ENABLE           , MUIA_Selected       , (LONG) 1 },
-	{ GID_MODEONTABOPENING  , OID_SND_MODEONTABOPENING , MUIA_Cycle_Active   , (LONG) 1 },
-	{ GID_SPLONTABOPENING   , OID_SND_SPLONTABOPENING  , MUIA_String_Contents, (LONG) DEFAULT_PRESETSSOUNDSPATH "/Eagh" },
-	{ GID_MODEONHIGHLIGHT   , OID_SND_MODEONHIGHLIGHT  , MUIA_Cycle_Active   , (LONG) 1 },
-	{ GID_SPLONHIGHLIGHT    , OID_SND_SPLONHIGHLIGHT   , MUIA_String_Contents, (LONG) DEFAULT_PRESETSSOUNDSPATH "/OhNo" },
-	{ GID_MODEONPRIVMSG     , OID_SND_MODEONPRIVMSG    , MUIA_Cycle_Active   , (LONG) 1 },
-	{ GID_SPLONPRIVMSG      , OID_SND_SPLONPRIVMSG     , MUIA_String_Contents, (LONG) DEFAULT_PRESETSSOUNDSPATH "/Beep" },
-	{ GID_CTCPSAMPLES       , OID_SND_CTCPSAMPLES      , MUIA_String_Contents, (LONG) DEFAULT_PRESETSSOUNDSPATH "/" },
-	{ GID_USEEXTERNALPLAYER , OID_SND_USEEXTERNALPLAYER, MUIA_Selected       , (LONG) 0 },
-	{ GID_EXTERNALPLAYER    , OID_SND_EXTERNALPLAYER   , MUIA_String_Contents, (LONG) "/" },
+	{ GID_ENABLED           , OID_SND_ENABLE           , MUIA_Selected       , (IPTR) 1 },
+	{ GID_MODEONTABOPENING  , OID_SND_MODEONTABOPENING , MUIA_Cycle_Active   , (IPTR) 1 },
+	{ GID_SPLONTABOPENING   , OID_SND_SPLONTABOPENING  , MUIA_String_Contents, (IPTR) DEFAULT_PRESETSSOUNDSPATH "/Eagh" },
+	{ GID_MODEONHIGHLIGHT   , OID_SND_MODEONHIGHLIGHT  , MUIA_Cycle_Active   , (IPTR) 1 },
+	{ GID_SPLONHIGHLIGHT    , OID_SND_SPLONHIGHLIGHT   , MUIA_String_Contents, (IPTR) DEFAULT_PRESETSSOUNDSPATH "/OhNo" },
+	{ GID_MODEONPRIVMSG     , OID_SND_MODEONPRIVMSG    , MUIA_Cycle_Active   , (IPTR) 1 },
+	{ GID_SPLONPRIVMSG      , OID_SND_SPLONPRIVMSG     , MUIA_String_Contents, (IPTR) DEFAULT_PRESETSSOUNDSPATH "/Beep" },
+	{ GID_CTCPSAMPLES       , OID_SND_CTCPSAMPLES      , MUIA_String_Contents, (IPTR) DEFAULT_PRESETSSOUNDSPATH "/" },
+	{ GID_USEEXTERNALPLAYER , OID_SND_USEEXTERNALPLAYER, MUIA_Selected       , (IPTR) 0 },
+	{ GID_EXTERNALPLAYER    , OID_SND_EXTERNALPLAYER   , MUIA_String_Contents, (IPTR) "/" },
 	{ -1,0,0,0 },
 };
 
@@ -229,7 +229,7 @@ ULONG i;
 
 	for( i = 0 ; TAB_CONFIGITEMS[ i ].GadgetID != -1 ; i++ ) {
 		if( TAB_CONFIGITEMS[ i ].ObjectID == msg->ObjectID ) {
-			return( (ULONG) MUIGetVar( mccdata->mcc_ClassObjects[ TAB_CONFIGITEMS[ i ].GadgetID ], TAB_CONFIGITEMS[ i ].Attr ) );
+			return( (IPTR) MUIGetVar( mccdata->mcc_ClassObjects[ TAB_CONFIGITEMS[ i ].GadgetID ], TAB_CONFIGITEMS[ i ].Attr ) );
 		}
 	}
 	return( 0 );

@@ -44,13 +44,13 @@ MM_CHATLOG_ENTRYFREE,
 
 struct MP_CHATLOG_SHOWLASTLINE { ULONG MethodID; ULONG Force; };
 
-struct MP_CHATLOG_COMPOSELOGNAME { ULONG MethodID; struct Server *Server; struct Channel *Channel; };
-struct MP_CHATLOG_OPENNEWFILE    { ULONG MethodID; struct Server *Server; struct Channel *Channel; };
-struct MP_CHATLOG_OPEN           { ULONG MethodID; struct Server *Server; struct Channel *Channel; };
-struct MP_CHATLOG_CLOSE          { ULONG MethodID; struct Channel *Channel; };
-struct MP_CHATLOG_WRITE          { ULONG MethodID; struct Channel *Channel; struct ChatLogEntry *ChatLogEntry; };
-struct MP_CHATLOG_ENTRYALLOC     { ULONG MethodID; struct Channel *Channel; ULONG Pen; char *Message;  };
-struct MP_CHATLOG_ENTRYFREE      { ULONG MethodID; struct ChatLogEntry *ChatLogEntry; };
+struct MP_CHATLOG_COMPOSELOGNAME { STACKED ULONG MethodID; STACKED struct Server *Server; STACKED struct Channel *Channel; };
+struct MP_CHATLOG_OPENNEWFILE    { STACKED ULONG MethodID; STACKED struct Server *Server; STACKED struct Channel *Channel; };
+struct MP_CHATLOG_OPEN           { STACKED ULONG MethodID; STACKED struct Server *Server; STACKED struct Channel *Channel; };
+struct MP_CHATLOG_CLOSE          { STACKED ULONG MethodID; STACKED struct Channel *Channel; };
+struct MP_CHATLOG_WRITE          { STACKED ULONG MethodID; STACKED struct Channel *Channel; STACKED struct ChatLogEntry *ChatLogEntry; };
+struct MP_CHATLOG_ENTRYALLOC     { STACKED ULONG MethodID; STACKED struct Channel *Channel; STACKED ULONG Pen; STACKED char *Message;  };
+struct MP_CHATLOG_ENTRYFREE      { STACKED ULONG MethodID; STACKED struct ChatLogEntry *ChatLogEntry; };
 
 /*************************************************************************/
 

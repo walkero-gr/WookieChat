@@ -35,8 +35,8 @@ MM_CHATCHANNELLIST_CHANNELISVISIBLE,
 /* Attributes */
 };
 
-struct MP_CHATCHANNELLIST_SERVERISVISIBLE  { ULONG MethodID; struct Channel *Channel; };
-struct MP_CHATCHANNELLIST_CHANNELISVISIBLE { ULONG MethodID; struct Channel *Channel; };
+struct MP_CHATCHANNELLIST_SERVERISVISIBLE  { STACKED ULONG MethodID; STACKED struct Channel *Channel; };
+struct MP_CHATCHANNELLIST_CHANNELISVISIBLE { STACKED ULONG MethodID; STACKED struct Channel *Channel; };
 
 /*************************************************************************/
 

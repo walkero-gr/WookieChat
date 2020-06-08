@@ -93,7 +93,7 @@ Object *objs[ GID_LAST ];
 
 		DoMethod( obj, MUIM_Notify, MUIA_Window_CloseRequest, TRUE, obj, 3, MUIM_Set, MUIA_Window_Open, FALSE );
 
-		return( (ULONG) obj );
+		return( (IPTR) obj );
     }
 	return( (IPTR) NULL );
 }
@@ -126,7 +126,7 @@ struct TagItem *tag;
 struct TagItem *tstate;
 
 	for( tstate = msg->ops_AttrList ; ( tag = NextTagItem( &tstate ) ) ; ) {
-		ULONG tidata = tag->ti_Data;
+		IPTR tidata = tag->ti_Data;
         switch( tag->ti_Tag ) {
 			case MA_WINDOWABOUT_AREXXPORT:
 				strncpy( mccdata->mcc_ArexxPort, (char *) LGS( MSG_MUICLASS_WINDOWABOUT_AREXXPORT_GAD ), AREXXPORT_SIZEOF );

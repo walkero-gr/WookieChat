@@ -91,7 +91,7 @@ static IPTR OM_New( struct IClass *cl, Object *obj, struct opSet *msg UNUSED )
 {
 	debug( "%s (%ld) %s() - Class: 0x%08lx Object: 0x%08lx \n", __FILE__, __LINE__, __func__, cl, obj );
 
-	if( (obj = DoSuperNew( cl, obj, TAG_MORE, msg->ops_AttrList ) ) ) {
+	if( (obj = (Object *)DoSuperNew( cl, obj, TAG_MORE, msg->ops_AttrList ) ) ) {
 
 		struct mccdata *mccdata = INST_DATA( cl, obj );
 
@@ -372,7 +372,7 @@ struct TagItem *tag;
 struct TagItem *tstate;
 
 	for( tstate = msg->ops_AttrList ; ( tag = NextTagItem( &tstate ) ) ; ) {
-		ULONG tidata = tag->ti_Data;
+		IPTR tidata = tag->ti_Data;
         switch( tag->ti_Tag ) {
 			case MA_MESSAGEINPUT_OBJECTSETTINGS:
 				mccdata->mcc_ClassObjects[ WID_SETTINGS ] = (Object *) tidata;

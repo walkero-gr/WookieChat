@@ -27,7 +27,7 @@ MM_BUTTONLIST_ADD =  0xFED00400,
 /* Attributes */
 };
 
-struct MP_BUTTONLIST_ADD { ULONG MethodID; STRPTR Name; STRPTR Command; };
+struct MP_BUTTONLIST_ADD { STACKED ULONG MethodID; STACKED STRPTR Name; STACKED STRPTR Command; };
 
 /*************************************************************************/
 

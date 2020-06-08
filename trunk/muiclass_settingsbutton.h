@@ -33,8 +33,8 @@ MM_SETTINGSBUTTON_LISTTOGADGETS,
 /* Attributes */
 };
 
-struct MP_SETTINGSBUTTON_READCONFIG { ULONG MethodID; ULONG ObjectID; };
-struct MP_SETTINGSBUTTON_ADD        { ULONG MethodID; STRPTR Button; };
+struct MP_SETTINGSBUTTON_READCONFIG { STACKED ULONG MethodID; STACKED ULONG ObjectID; };
+struct MP_SETTINGSBUTTON_ADD        { STACKED ULONG MethodID; STACKED STRPTR Button; };
 
 /*************************************************************************/
 

@@ -29,7 +29,7 @@ MM_SETTINGSDCC_READCONFIG,
 /* Attributes */
 };
 
-struct MP_SETTINGSDCC_READCONFIG { ULONG MethodID; ULONG ObjectID; };
+struct MP_SETTINGSDCC_READCONFIG { STACKED ULONG MethodID; STACKED ULONG ObjectID; };
 
 /*************************************************************************/
 

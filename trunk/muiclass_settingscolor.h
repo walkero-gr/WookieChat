@@ -32,9 +32,9 @@ MM_SETTINGSCOLOR_EXPORTASTEXT,
 /* Attributes */
 };
 
-struct MP_SETTINGSCOLOR_READCONFIG        { ULONG MethodID; ULONG ObjectID; };
-struct MP_SETTINGSCOLOR_IMPORTASTEXT      { ULONG MethodID; char *Name; };
-struct MP_SETTINGSCOLOR_EXPORTASTEXT      { ULONG MethodID; char *Name; };
+struct MP_SETTINGSCOLOR_READCONFIG        { STACKED ULONG MethodID; STACKED ULONG ObjectID; };
+struct MP_SETTINGSCOLOR_IMPORTASTEXT      { STACKED ULONG MethodID; STACKED char *Name; };
+struct MP_SETTINGSCOLOR_EXPORTASTEXT      { STACKED ULONG MethodID; STACKED char *Name; };
 
 /*************************************************************************/
 

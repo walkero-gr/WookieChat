@@ -66,21 +66,21 @@ struct ConfigItem {
 	ULONG GadgetID;
 	ULONG ObjectID;
 	ULONG Attr;
-	LONG  Default;
+	IPTR  Default;
 };
 
 
 static struct ConfigItem TAB_CONFIGITEMS[] = {
-	{ GID_TABBUTTON           , OID_GUI_TABBUTTON           , MUIA_Selected       , (LONG) 0 },
-	{ GID_TABSERVER           , OID_GUI_TABSERVER           , MUIA_Selected       , (LONG) 1 },
-	{ GID_NICKLISTGFXINFO     , OID_GUI_NICKLISTGFXINFO     , MUIA_Selected       , (LONG) 1 },
-	{ GID_NICKLISTREMCHARS    , OID_GUI_NICKLISTREMCHARS    , MUIA_Selected       , (LONG) 1 },
-	{ GID_SMILIES             , OID_GUI_SMILIES             , MUIA_Selected       , (LONG) 1 },
-	{ GID_SMILIESTHEME        , OID_GUI_SMILIESTHEME        , MUIA_Cycle_Active   , (LONG) 0 },
-	{ GID_TIMESHOW            , OID_GUI_TIMESHOW            , MUIA_Selected       , (LONG) 1 },
-	{ GID_TIMEFORMAT          , OID_GUI_TIMEFORMAT          , MUIA_String_Contents, (LONG) "[%H:%M:%S]" },
-	{ GID_SHOWJOINPART        , OID_GUI_SHOWJOINPART        , MUIA_Selected       , (LONG) 1 },
-	{ GID_CHANNELVIEWSPACING  , OID_GUI_CHANNELVIEWSPACING  , MUIA_Slider_Level   , (LONG) 8 },
+	{ GID_TABBUTTON           , OID_GUI_TABBUTTON           , MUIA_Selected       , (IPTR) 0 },
+	{ GID_TABSERVER           , OID_GUI_TABSERVER           , MUIA_Selected       , (IPTR) 1 },
+	{ GID_NICKLISTGFXINFO     , OID_GUI_NICKLISTGFXINFO     , MUIA_Selected       , (IPTR) 1 },
+	{ GID_NICKLISTREMCHARS    , OID_GUI_NICKLISTREMCHARS    , MUIA_Selected       , (IPTR) 1 },
+	{ GID_SMILIES             , OID_GUI_SMILIES             , MUIA_Selected       , (IPTR) 1 },
+	{ GID_SMILIESTHEME        , OID_GUI_SMILIESTHEME        , MUIA_Cycle_Active   , (IPTR) 0 },
+	{ GID_TIMESHOW            , OID_GUI_TIMESHOW            , MUIA_Selected       , (IPTR) 1 },
+	{ GID_TIMEFORMAT          , OID_GUI_TIMEFORMAT          , MUIA_String_Contents, (IPTR) "[%H:%M:%S]" },
+	{ GID_SHOWJOINPART        , OID_GUI_SHOWJOINPART        , MUIA_Selected       , (IPTR) 1 },
+	{ GID_CHANNELVIEWSPACING  , OID_GUI_CHANNELVIEWSPACING  , MUIA_Slider_Level   , (IPTR) 8 },
 	{ -1,0,0,0 },
 };
 

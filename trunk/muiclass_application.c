@@ -177,12 +177,12 @@ static IPTR OM_Get(struct IClass *cl, Object *obj, struct opGet *msg )
 struct mccdata *mccdata = INST_DATA( cl, obj );
 
 	switch( msg->opg_AttrID ) {
-		case MA_APPLICATION_OBJECTNETWORK          : *msg->opg_Storage = (ULONG) mccdata->mcc_ClassObjects[ GID_NETWORK       ] ; return( TRUE );
-		case MA_APPLICATION_OBJECTWINDOWQUIT       : *msg->opg_Storage = (ULONG) mccdata->mcc_ClassObjects[ WID_QUIT          ] ; return( TRUE );
-		case MA_APPLICATION_OBJECTWINDOWABOUT      : *msg->opg_Storage = (ULONG) mccdata->mcc_ClassObjects[ WID_ABOUT         ] ; return( TRUE );
-		case MA_APPLICATION_OBJECTWINDOWSETTINGS   : *msg->opg_Storage = (ULONG) mccdata->mcc_ClassObjects[ WID_SETTINGS      ] ; return( TRUE );
-		case MA_APPLICATION_OBJECTWINDOWIGNORELIST : *msg->opg_Storage = (ULONG) mccdata->mcc_ClassObjects[ WID_IGNORELIST    ] ; return( TRUE );
-		case MA_APPLICATION_OBJECTWINDOWURLGRABBER : *msg->opg_Storage = (ULONG) mccdata->mcc_ClassObjects[ WID_URLGRABBER    ] ; return( TRUE );
+		case MA_APPLICATION_OBJECTNETWORK          : *msg->opg_Storage = (IPTR) mccdata->mcc_ClassObjects[ GID_NETWORK       ] ; return( TRUE );
+		case MA_APPLICATION_OBJECTWINDOWQUIT       : *msg->opg_Storage = (IPTR) mccdata->mcc_ClassObjects[ WID_QUIT          ] ; return( TRUE );
+		case MA_APPLICATION_OBJECTWINDOWABOUT      : *msg->opg_Storage = (IPTR) mccdata->mcc_ClassObjects[ WID_ABOUT         ] ; return( TRUE );
+		case MA_APPLICATION_OBJECTWINDOWSETTINGS   : *msg->opg_Storage = (IPTR) mccdata->mcc_ClassObjects[ WID_SETTINGS      ] ; return( TRUE );
+		case MA_APPLICATION_OBJECTWINDOWIGNORELIST : *msg->opg_Storage = (IPTR) mccdata->mcc_ClassObjects[ WID_IGNORELIST    ] ; return( TRUE );
+		case MA_APPLICATION_OBJECTWINDOWURLGRABBER : *msg->opg_Storage = (IPTR) mccdata->mcc_ClassObjects[ WID_URLGRABBER    ] ; return( TRUE );
 		default: return( DoSuperMethodA( cl, obj, (Msg) msg ) );
     }
 }

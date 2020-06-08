@@ -29,7 +29,7 @@ MM_SETTINGSGUI_READCONFIG,
 /* Attributes */
 };
 
-struct MP_SETTINGSGUI_READCONFIG { ULONG MethodID; ULONG ObjectID; };
+struct MP_SETTINGSGUI_READCONFIG { STACKED ULONG MethodID; STACKED ULONG ObjectID; };
 
 /*************************************************************************/
 

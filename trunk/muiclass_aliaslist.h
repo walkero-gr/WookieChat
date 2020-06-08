@@ -29,9 +29,9 @@ MM_ALIASLIST_EXPORTLISTASTEXT,
 /* Attributes */
 };
 
-struct MP_ALIASLIST_ADD              { ULONG MethodID; STRPTR Alias; STRPTR Text; };
-struct MP_ALIASLIST_IMPORTLISTASTEXT { ULONG MethodID; STRPTR Name; };
-struct MP_ALIASLIST_EXPORTLISTASTEXT { ULONG MethodID; STRPTR Name; };
+struct MP_ALIASLIST_ADD              { STACKED ULONG MethodID; STACKED STRPTR Alias; STACKED STRPTR Text; };
+struct MP_ALIASLIST_IMPORTLISTASTEXT { STACKED ULONG MethodID; STACKED STRPTR Name; };
+struct MP_ALIASLIST_EXPORTLISTASTEXT { STACKED ULONG MethodID; STACKED STRPTR Name; };
 
 /*************************************************************************/
 

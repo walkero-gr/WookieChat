@@ -41,8 +41,8 @@ MM_SETTINGSSERVER_CHANNELLISTTOGADGETS,
 /* Attributes */
 };
 
-struct MP_SETTINGSSERVER_READCONFIG { ULONG MethodID; ULONG ObjectID; };
-struct MP_SETTINGSSERVER_WRITECONFIG { ULONG MethodID; ULONG ObjectID; APTR Data; };
+struct MP_SETTINGSSERVER_READCONFIG { STACKED ULONG MethodID; STACKED ULONG ObjectID; };
+struct MP_SETTINGSSERVER_WRITECONFIG { STACKED ULONG MethodID; STACKED ULONG ObjectID; STACKED APTR Data; };
 
 /*************************************************************************/
 

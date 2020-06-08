@@ -30,8 +30,8 @@ MM_WINDOWURLGRABBER_DOUBLECLICK,
 /* Attributes */
 };
 
-struct MP_WINDOWURLGRABBER_EXTRACTURL { ULONG MethodID; STRPTR Data; };
-struct MP_WINDOWURLGRABBER_ADDURL     { ULONG MethodID; STRPTR URL; };
+struct MP_WINDOWURLGRABBER_EXTRACTURL { STACKED ULONG MethodID; STACKED STRPTR Data; };
+struct MP_WINDOWURLGRABBER_ADDURL     { STACKED ULONG MethodID; STACKED STRPTR URL; };
 
 /*************************************************************************/
 
