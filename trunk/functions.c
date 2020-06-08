@@ -47,6 +47,9 @@ char *STR_NUL = "";
 
 ULONG ShowRequester( ULONG message, ULONG gadgets, IPTR *args )
 {
+    /* Note: this is broken on 64-bits. MUI_Request expects an erray of "ULONGS" but
+     * EasyReqyestArgs and VPrinf expect RAWARG which is a package data stream. args
+       would have to be reformatted to data stream */
 	if( MUIMasterBase ) {
 		return( MUI_RequestA( NULL, NULL, 0, (char *) LGS( MSG_REQUESTER_TITLE ), (char *) LGS( gadgets ), (char *) LGS( message ), args ) );
 	} else {
