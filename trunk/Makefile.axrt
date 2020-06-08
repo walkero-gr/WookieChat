@@ -1,0 +1,90 @@
+CC          = gcc
+LD          = gcc
+LDFLAGS     = -specs=/usr/lib/x86_64-linux-gnu/axrt.specs
+STRIP       =
+LIBS        = -lmui
+INCS        = -I/usr/include/axrt -I/usr/include/axrt/SDI
+DEFINES     = -DDEBUG -DENABLE_MEMORYTRACKING=1 -DENABLE_NLIST=1 -D__AROS__
+CFLAGS      = $(INCS) $(DEFINES) -std=gnu99 -Wall -Wno-format -Wno-pointer-sign -g -O0
+APPLICATION = WookieChat
+SYSTEM      = AxRT
+CATALOGS    = english deutsch español français greek italiano magyar norsk polski svenska
+FLEXCAT     = flexcat
+
+SOURCES   = 		wookiechat.c                \
+			version.c                   \
+			functions.c                 \
+			irccommand.c                \
+			muiclass.c                  \
+			muiclass_aliaslist.c        \
+			muiclass_application.c      \
+			muiclass_audio.c            \
+			muiclass_buttonlist.c       \
+			muiclass_channellist.c      \
+			muiclass_chatchannellist.c  \
+			muiclass_chatlog.c          \
+			muiclass_chatuserlist.c     \
+			muiclass_eventlist.c        \
+			muiclass_ignorelist.c       \
+			muiclass_messageinput.c     \
+			muiclass_network.c          \
+			muiclass_nicklist.c         \
+			muiclass_settingslist.c     \
+			muiclass_serverlist.c       \
+			muiclass_settingsalias.c    \
+			muiclass_settingsbutton.c   \
+			muiclass_settingscolor.c    \
+			muiclass_settingsdcc.c      \
+			muiclass_settingsevent.c    \
+			muiclass_settingsgeneral.c  \
+			muiclass_settingsgui.c      \
+			muiclass_settingslog.c      \
+			muiclass_settingsserver.c   \
+			muiclass_settingssound.c    \
+			muiclass_urllist.c          \
+			muiclass_windowabout.c      \
+			muiclass_windowchat.c       \
+			muiclass_windowignorelist.c \
+			muiclass_windowquit.c       \
+			muiclass_windowquicksetup.c \
+			muiclass_windowsettings.c   \
+			muiclass_windowurlgrabber.c \
+			locale.c                    \
+			debug.c                     \
+			memorytracking.c            \
+
+OBJECTS   = $(SOURCES:.c=.o)
+
+all: $(APPLICATION)_strings.h catalogs $(APPLICATION)
+ 
+$(APPLICATION): $(OBJECTS)
+	@echo "    [LD] $@"
+	@$(LD) $(LDFLAGS) -o $(APPLICATION)_$(SYSTEM) $(OBJECTS) /usr/lib/x86_64-linux-gnu/startup.o /usr/lib/x86_64-linux-gnu/axrt.ld $(LIBS)
+
+clean:
+	-rm -f $(OBJECTS)
+	-rm -f $(OBJECTS:.o=.d)
+	-rm -f $(APPLICATION)_$(SYSTEM)
+	-rm -f catalogs/*/*.catalog
+	-rm -f $(APPLICATION)_strings.h
+
+-include $(OBJECTS:.o=.d)
+
+%.o: %.c $(APPLICATION)_strings.h *.h Makefile.axrt
+	@echo "    [CC] $@"
+	@$(CC) $(CFLAGS) -c -o $@ $<
+
+#  locale
+#
+
+$(APPLICATION)_strings.h: $(APPLICATION).cd
+	@echo "    [FLEXCAT] $@"
+	@./$(FLEXCAT) $(APPLICATION).cd $@=catalogs/C_h_orig.sd
+
+.PHONY: catalogs
+catalogs: $(patsubst %,catalogs/%/$(APPLICATION).catalog,$(CATALOGS))
+
+%.catalog: %.ct $(APPLICATION).cd
+	@echo "    [FLEXCAT] $@"
+	@./$(FLEXCAT) $(APPLICATION).cd $< CATALOG=$@ MODIFIED
+	
