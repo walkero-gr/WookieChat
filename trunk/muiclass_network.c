@@ -530,12 +530,13 @@ IPTR result;
 				memset( &( addr.sin_zero ), '\0', 8 );
 
 				result = MSG_ERROR_NOERROR + 6; /* socket error */
-				connect( s->s_ServerSocket, (struct sockaddr*) &addr, sizeof( struct sockaddr ) );
-				s->s_State = SVRSTATE_CONNECTED;
+				if ( connect( s->s_ServerSocket, (struct sockaddr*) &addr, sizeof( struct sockaddr ) ) == 0 ) {
+					s->s_State = SVRSTATE_CONNECTED;
 
-				DoMethod( obj, MM_NETWORK_SERVERMESSAGESENDMSG, s, NULL, "/HELLO" );
+					DoMethod( obj, MM_NETWORK_SERVERMESSAGESENDMSG, s, NULL, "/HELLO" );
 
-				result = MSG_ERROR_NOERROR;
+					result = MSG_ERROR_NOERROR;
+				}
 				return( result );
 
 			}
