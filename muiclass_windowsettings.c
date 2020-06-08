@@ -84,15 +84,15 @@ struct mccdata
 
 /*************************************************************************/
 
-ULONG GlobalReadConfig( ULONG objectid )
+IPTR GlobalReadConfig( ULONG objectid )
 {
 Object *settobj;
-ULONG result = 0;
+IPTR result = 0;
 
 	if( ( settobj = (Object *) MUIGetVar( application, MA_APPLICATION_OBJECTWINDOWSETTINGS ) ) ) {
 		result = DoMethod( settobj, MM_WINDOWSETTINGS_READCONFIG, objectid );
 	}
-	return( (ULONG) result );
+	return( (IPTR) result );
 }
 /* \\\ */
 /* /// GlobalReadConfigObj()
@@ -101,15 +101,15 @@ ULONG result = 0;
 
 /*************************************************************************/
 
-ULONG GlobalReadConfigObj( Object *obj, ULONG objectid )
+IPTR GlobalReadConfigObj( Object *obj, ULONG objectid )
 {
 Object *settobj;
-ULONG result = 0;
+IPTR result = 0;
 
 	if( ( settobj = (Object *) MUIGetVar( _app( obj ), MA_APPLICATION_OBJECTWINDOWSETTINGS ) ) ) {
 		result = DoMethod( settobj, MM_WINDOWSETTINGS_READCONFIG, objectid );
 	}
-	return( (ULONG) result );
+	return( (IPTR) result );
 }
 /* \\\ */
 
@@ -248,7 +248,7 @@ struct mccdata *mccdata = INST_DATA(cl,obj);
 static IPTR MM_ReadConfig( struct IClass *cl, Object *obj, struct MP_WINDOWSETTINGS_READCONFIG *msg )
 {
 struct mccdata *mccdata = INST_DATA( cl, obj );
-ULONG result;
+IPTR result;
 
 	debug( "%s (%ld) %s() - Class: 0x%08lx Object: 0x%08lx \n", __FILE__, __LINE__, __func__, cl, obj );
 

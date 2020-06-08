@@ -29,8 +29,8 @@ MM_NICKLIST_REMOVE,
 /* Attributes */
 };
 
-struct MP_NICKLIST_ADD    { ULONG MethodID; APTR ServerEntry; STRPTR Nick; STRPTR Password; };
-struct MP_NICKLIST_REMOVE { ULONG MethodID; APTR NickEntry; };
+struct MP_NICKLIST_ADD    { STACKED ULONG MethodID; STACKED APTR ServerEntry; STACKED STRPTR Nick; STACKED STRPTR Password; };
+struct MP_NICKLIST_REMOVE { STACKED ULONG MethodID; STACKED APTR NickEntry; };
 
 
 /*************************************************************************/

@@ -64,19 +64,19 @@ struct ConfigItem {
 	ULONG GadgetID;
 	ULONG ObjectID;
 	ULONG Attr;
-	LONG  Default;
+	IPTR  Default;
 };
 
 static struct ConfigItem TAB_CONFIGITEMS[] = {
-	{ GID_USELOCALADDRESS    , OID_DCC_USELOCALADDRESS , MUIA_Selected       , (ULONG) 1      },
-	{ GID_USECUSTOMADDRESS   , OID_DCC_USECUSTOMADDRESS, MUIA_Selected       , (ULONG) 1      },
-	{ GID_CUSTOMADDRESS      , OID_DCC_CUSTOMADDRESS   , MUIA_String_Contents, (ULONG) ""     },
-	{ GID_RANGEFROM          , OID_DCC_RANGEFROM       , MUIA_String_Integer , (ULONG) 1028   },
-	{ GID_RANGETO            , OID_DCC_RANGETO         , MUIA_String_Integer , (ULONG) 1035   },
-	{ GID_INPATH             , OID_DCC_INPATH          , MUIA_String_Contents, (ULONG) "RAM:" },
-	{ GID_INACCEPT           , OID_DCC_INACCEPT        , MUIA_Selected       , (ULONG) 1      },
-	{ GID_INWRITEMODE        , OID_DCC_INWRITEMODE     , MUIA_Cycle_Active   , (ULONG) 1      },
-	{ GID_OUTPATH            , OID_DCC_OUTPATH         , MUIA_String_Contents, (ULONG) "RAM:" },
+	{ GID_USELOCALADDRESS    , OID_DCC_USELOCALADDRESS , MUIA_Selected       , (IPTR) 1      },
+	{ GID_USECUSTOMADDRESS   , OID_DCC_USECUSTOMADDRESS, MUIA_Selected       , (IPTR) 1      },
+	{ GID_CUSTOMADDRESS      , OID_DCC_CUSTOMADDRESS   , MUIA_String_Contents, (IPTR) ""     },
+	{ GID_RANGEFROM          , OID_DCC_RANGEFROM       , MUIA_String_Integer , (IPTR) 1028   },
+	{ GID_RANGETO            , OID_DCC_RANGETO         , MUIA_String_Integer , (IPTR) 1035   },
+	{ GID_INPATH             , OID_DCC_INPATH          , MUIA_String_Contents, (IPTR) "RAM:" },
+	{ GID_INACCEPT           , OID_DCC_INACCEPT        , MUIA_Selected       , (IPTR) 1      },
+	{ GID_INWRITEMODE        , OID_DCC_INWRITEMODE     , MUIA_Cycle_Active   , (IPTR) 1      },
+	{ GID_OUTPATH            , OID_DCC_OUTPATH         , MUIA_String_Contents, (IPTR) "RAM:" },
 	{ -1,0,0,0 },
 };
 
@@ -229,7 +229,7 @@ ULONG i;
 
 	for( i = 0 ; TAB_CONFIGITEMS[ i ].GadgetID != -1 ; i++ ) {
 		if( TAB_CONFIGITEMS[ i ].ObjectID == msg->ObjectID ) {
-			return( (ULONG) MUIGetVar( mccdata->mcc_ClassObjects[ TAB_CONFIGITEMS[ i ].GadgetID ], TAB_CONFIGITEMS[ i ].Attr ) );
+			return( (IPTR) MUIGetVar( mccdata->mcc_ClassObjects[ TAB_CONFIGITEMS[ i ].GadgetID ], TAB_CONFIGITEMS[ i ].Attr ) );
 		}
 	}
 	return( 0 );

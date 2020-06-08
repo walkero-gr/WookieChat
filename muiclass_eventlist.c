@@ -46,7 +46,7 @@ static IPTR OM_New( struct IClass *cl, Object *obj, struct opSet *msg UNUSED )
 
 	debug( "%s (%ld) %s() - Class: 0x%08lx Object: 0x%08lx \n", __FILE__, __LINE__, __func__, cl, obj );
 
-	if( ( obj =  DoSuperNew( cl, obj,
+	if( ( obj =  (Object *) DoSuperNew( cl, obj,
 							MUIA_NList_Title         , TRUE,
 							MUIA_CycleChain          , 1,
 							MUIA_NList_Format        , "BAR,BAR,BAR,BAR",

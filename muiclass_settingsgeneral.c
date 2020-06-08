@@ -68,24 +68,24 @@ struct ConfigItem {
 	ULONG GadgetID;
 	ULONG ObjectID;
 	ULONG Attr;
-	LONG  Default;
+	SIPTR Default;
 };
 
 static struct ConfigItem TAB_CONFIGITEMS[] = {
-	{ GID_EDITOR           , OID_GEN_EDITOR           , MUIA_String_Contents, (LONG) "Ed" },
+	{ GID_EDITOR           , OID_GEN_EDITOR           , MUIA_String_Contents, (SIPTR) "Ed" },
 #ifdef __MORPHOS__
-	{ GID_BROWSER          , OID_GEN_BROWSER          , MUIA_String_Contents, (LONG) "Open" },
+	{ GID_BROWSER          , OID_GEN_BROWSER          , MUIA_String_Contents, (SIPTR) "Open" },
 #else
-	{ GID_BROWSER          , OID_GEN_BROWSER          , MUIA_String_Contents, (LONG) "" },
+	{ GID_BROWSER          , OID_GEN_BROWSER          , MUIA_String_Contents, (SIPTR) "" },
 #endif
-	{ GID_MSGKICK          , OID_GEN_MSGKICK          , MUIA_String_Contents, (LONG) "Pfffffffffffffffffft" },
-	{ GID_MSGQUIT          , OID_GEN_MSGQUIT          , MUIA_String_Contents, (LONG) "Heroes never die...They just reload!" },
-	{ GID_MSGPART          , OID_GEN_MSGPART          , MUIA_String_Contents, (LONG) "Heroes never die...They just reload!" },
+	{ GID_MSGKICK          , OID_GEN_MSGKICK          , MUIA_String_Contents, (SIPTR) "Pfffffffffffffffffft" },
+	{ GID_MSGQUIT          , OID_GEN_MSGQUIT          , MUIA_String_Contents, (SIPTR) "Heroes never die...They just reload!" },
+	{ GID_MSGPART          , OID_GEN_MSGPART          , MUIA_String_Contents, (SIPTR) "Heroes never die...They just reload!" },
 	{ GID_OPENPRIVATEQUERY , OID_GEN_OPENPRIVATEQUERY , MUIA_Selected       , -1 },
 	{ GID_REQUESTWHOIS     , OID_GEN_REQUESTWHOIS     , MUIA_Selected       ,  0 },
 	{ GID_REJOIN           , OID_GEN_REJOIN           , MUIA_Selected       ,  0 },
 	{ GID_OPENQUERY        , OID_GEN_OPENQUERY        , MUIA_Selected       , -1 },
-	{ GID_HIGHLIGHTPATTERN , OID_GEN_HIGHLIGHTPATTERN , MUIA_String_Contents, (LONG) "" },
+	{ GID_HIGHLIGHTPATTERN , OID_GEN_HIGHLIGHTPATTERN , MUIA_String_Contents, (SIPTR) "" },
 	{ GID_NICKCOMPLETITION , OID_GEN_NICKCOMPLETITION , MUIA_Cycle_Active   , NICKCOMPLETITIONMODE_WOOKIESTYLE },
 	{ -1,0,0,0 },
 };

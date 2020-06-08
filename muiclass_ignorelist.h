@@ -29,9 +29,9 @@ MM_IGNORELIST_EXPORTLISTASTEXT,
 /* Attributes */
 };
 
-struct MP_IGNORELIST_ADD              { ULONG MethodID; STRPTR Pattern; ULONG Flags; };
-struct MP_IGNORELIST_IMPORTLISTASTEXT { ULONG MethodID; STRPTR Name; };
-struct MP_IGNORELIST_EXPORTLISTASTEXT { ULONG MethodID; STRPTR Name; };
+struct MP_IGNORELIST_ADD              { STACKED ULONG MethodID; STACKED STRPTR Pattern; STACKED ULONG Flags; };
+struct MP_IGNORELIST_IMPORTLISTASTEXT { STACKED ULONG MethodID; STACKED STRPTR Name; };
+struct MP_IGNORELIST_EXPORTLISTASTEXT { STACKED ULONG MethodID; STACKED STRPTR Name; };
 
 /*************************************************************************/
 

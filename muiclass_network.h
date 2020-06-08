@@ -74,37 +74,37 @@ MA_NETWORK_OBJECTAUDIO,
 MA_NETWORK_OBJECTCHATLOG,
 };
 
-struct MP_NETWORK_SERVERFIND              { ULONG MethodID; struct ServerEntry *ServerEntry; };
-struct MP_NETWORK_SERVERALLOC             { ULONG MethodID; struct ServerEntry *ServerEntry; };
-struct MP_NETWORK_SERVERFREE              { ULONG MethodID; struct Server *Server; };
+struct MP_NETWORK_SERVERFIND              { STACKED ULONG MethodID; STACKED struct ServerEntry *ServerEntry; };
+struct MP_NETWORK_SERVERALLOC             { STACKED ULONG MethodID; STACKED struct ServerEntry *ServerEntry; };
+struct MP_NETWORK_SERVERFREE              { STACKED ULONG MethodID; STACKED struct Server *Server; };
 
-struct MP_NETWORK_SERVERCONNECTAUTO       { ULONG MethodID; };
-struct MP_NETWORK_SERVERSOCKETINIT        { ULONG MethodID; struct Server *Server; };
-struct MP_NETWORK_SERVERSOCKETCLOSE       { ULONG MethodID; struct Server *Server; };
+struct MP_NETWORK_SERVERCONNECTAUTO       { STACKED ULONG MethodID; };
+struct MP_NETWORK_SERVERSOCKETINIT        { STACKED ULONG MethodID; STACKED struct Server *Server; };
+struct MP_NETWORK_SERVERSOCKETCLOSE       { STACKED ULONG MethodID; STACKED struct Server *Server; };
 
-struct MP_NETWORK_SERVERCONNECT           { ULONG MethodID; struct Server *Server; };
-struct MP_NETWORK_SERVERDISCONNECT        { ULONG MethodID; struct Server *Server; };
+struct MP_NETWORK_SERVERCONNECT           { STACKED ULONG MethodID; STACKED struct Server *Server; };
+struct MP_NETWORK_SERVERDISCONNECT        { STACKED ULONG MethodID; STACKED struct Server *Server; };
 
-struct MP_NETWORK_SERVERLOGIN             { ULONG MethodID; struct Server *Server; };
-struct MP_NETWORK_SERVERAUTOJOIN          { ULONG MethodID; struct Server *Server; };
+struct MP_NETWORK_SERVERLOGIN             { STACKED ULONG MethodID; STACKED struct Server *Server; };
+struct MP_NETWORK_SERVERAUTOJOIN          { STACKED ULONG MethodID; STACKED struct Server *Server; };
 
-struct MP_NETWORK_SERVERMESSAGERECEIVED   { ULONG MethodID; struct Server *Server; char *Message; };
-struct MP_NETWORK_SERVERMESSAGESENDMSG    { ULONG MethodID; struct Server *Server; struct Channel *Channel; char *Message; };
-struct MP_NETWORK_SERVERMESSAGEPARSEBEGIN { ULONG MethodID; struct Server *Server; char *Message; };
-struct MP_NETWORK_SERVERMESSAGEPARSEEND   { ULONG MethodID; struct ServerMessageParse *ServerMessageParse; };
-struct MP_NETWORK_SERVERMESSAGEPROCESS    { ULONG MethodID; struct Server *Server; struct ServerMessageParse *ServerMessageParse; };
+struct MP_NETWORK_SERVERMESSAGERECEIVED   { STACKED ULONG MethodID; STACKED struct Server *Server; STACKED char *Message; };
+struct MP_NETWORK_SERVERMESSAGESENDMSG    { STACKED ULONG MethodID; STACKED struct Server *Server; STACKED struct Channel *Channel; STACKED char *Message; };
+struct MP_NETWORK_SERVERMESSAGEPARSEBEGIN { STACKED ULONG MethodID; STACKED struct Server *Server; STACKED char *Message; };
+struct MP_NETWORK_SERVERMESSAGEPARSEEND   { STACKED ULONG MethodID; STACKED struct ServerMessageParse *ServerMessageParse; };
+struct MP_NETWORK_SERVERMESSAGEPROCESS    { STACKED ULONG MethodID; STACKED struct Server *Server; STACKED struct ServerMessageParse *ServerMessageParse; };
 
-struct MP_NETWORK_SERVERRECEIVEDATA       { ULONG MethodID; struct Server *Server; char *Data; ULONG Length; };
-struct MP_NETWORK_SERVERSENDDATA          { ULONG MethodID; struct Server *Server; char *Data; ULONG Length; };
+struct MP_NETWORK_SERVERRECEIVEDATA       { STACKED ULONG MethodID; STACKED struct Server *Server; STACKED char *Data; STACKED ULONG Length; };
+struct MP_NETWORK_SERVERSENDDATA          { STACKED ULONG MethodID; STACKED struct Server *Server; STACKED char *Data; STACKED ULONG Length; };
 
-struct MP_NETWORK_WAITSELECT              { ULONG MethodID; ULONG *SignalMask; };
+struct MP_NETWORK_WAITSELECT              { STACKED ULONG MethodID; STACKED ULONG *SignalMask; };
 
-struct MP_NETWORK_CHANNELFIND             { ULONG MethodID; struct Server *Server; char *Name; };
-struct MP_NETWORK_CHANNELALLOC            { ULONG MethodID; struct Server *Server; char *Name; ULONG Flags; };
-struct MP_NETWORK_CHANNELFREE             { ULONG MethodID; struct Server *Server; struct Channel *Channel; };
+struct MP_NETWORK_CHANNELFIND             { STACKED ULONG MethodID; STACKED struct Server *Server; STACKED char *Name; };
+struct MP_NETWORK_CHANNELALLOC            { STACKED ULONG MethodID; STACKED struct Server *Server; STACKED char *Name; STACKED ULONG Flags; };
+struct MP_NETWORK_CHANNELFREE             { STACKED ULONG MethodID; STACKED struct Server *Server; STACKED struct Channel *Channel; };
 
-struct MP_NETWORK_CHATNICKENTRYALLOC      { ULONG MethodID; struct Channel *Channel; char *NickName; };
-struct MP_NETWORK_CHATNICKENTRYFREE       { ULONG MethodID; struct Channel *Channel; struct ChatNickEntry *ChatNickEntry; };
+struct MP_NETWORK_CHATNICKENTRYALLOC      { STACKED ULONG MethodID; STACKED struct Channel *Channel; STACKED char *NickName; };
+struct MP_NETWORK_CHATNICKENTRYFREE       { STACKED ULONG MethodID; STACKED struct Channel *Channel; STACKED struct ChatNickEntry *ChatNickEntry; };
 
 /*************************************************************************/
 

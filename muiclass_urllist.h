@@ -29,9 +29,9 @@ MM_URLLIST_EXPORTLISTASTEXT,
 /* Attributes */
 };
 
-struct MP_URLLIST_ADD              { ULONG MethodID; STRPTR URL; };
-struct MP_URLLIST_IMPORTLISTASTEXT { ULONG MethodID; STRPTR Name; };
-struct MP_URLLIST_EXPORTLISTASTEXT { ULONG MethodID; STRPTR Name; };
+struct MP_URLLIST_ADD              { STACKED ULONG MethodID; STACKED STRPTR URL; };
+struct MP_URLLIST_IMPORTLISTASTEXT { STACKED ULONG MethodID; STACKED STRPTR Name; };
+struct MP_URLLIST_EXPORTLISTASTEXT { STACKED ULONG MethodID; STACKED STRPTR Name; };
 
 /*************************************************************************/
 

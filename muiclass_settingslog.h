@@ -29,7 +29,7 @@ MM_SETTINGSLOG_READCONFIG,
 /* Attributes */
 };
 
-struct MP_SETTINGSLOG_READCONFIG { ULONG MethodID; ULONG ObjectID; };
+struct MP_SETTINGSLOG_READCONFIG { STACKED ULONG MethodID; STACKED ULONG ObjectID; };
 
 /*************************************************************************/
 

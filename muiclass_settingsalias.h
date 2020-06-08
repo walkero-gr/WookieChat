@@ -33,8 +33,8 @@ MM_SETTINGSALIAS_LISTTOGADGETS,
 /* Attributes */
 };
 
-struct MP_SETTINGSALIAS_READCONFIG { ULONG MethodID; ULONG ObjectID; };
-struct MP_SETTINGSALIAS_ADD        { ULONG MethodID; STRPTR Alias; };
+struct MP_SETTINGSALIAS_READCONFIG { STACKED ULONG MethodID; STACKED ULONG ObjectID; };
+struct MP_SETTINGSALIAS_ADD        { STACKED ULONG MethodID; STACKED STRPTR Alias; };
 
 /*************************************************************************/
 

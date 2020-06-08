@@ -54,23 +54,23 @@ MA_APPLICATION_OBJECTWINDOWIGNORELIST,
 MA_APPLICATION_OBJECTWINDOWURLGRABBER,
 };
 
-struct MP_APPLICATION_WINDOWFIND        { ULONG MethodID; Object *Window; };
-struct MP_APPLICATION_WINDOWDISPOSE     { ULONG MethodID; Object *Window; };
+struct MP_APPLICATION_WINDOWFIND        { STACKED ULONG MethodID; STACKED Object *Window; };
+struct MP_APPLICATION_WINDOWDISPOSE     { STACKED ULONG MethodID; STACKED Object *Window; };
 
-struct MP_APPLICATION_WINDOWCHATNEW     { ULONG MethodID; };
-struct MP_APPLICATION_WINDOWCHATCLOSE   { ULONG MethodID; Object *Window; };
-struct MP_APPLICATION_WINDOWCHATGETNUM  { ULONG MethodID; };
+struct MP_APPLICATION_WINDOWCHATNEW     { STACKED ULONG MethodID; };
+struct MP_APPLICATION_WINDOWCHATCLOSE   { STACKED ULONG MethodID; STACKED Object *Window; };
+struct MP_APPLICATION_WINDOWCHATGETNUM  { STACKED ULONG MethodID; };
 
-struct MP_APPLICATION_CHATSETACTIVE     { ULONG MethodID; Object *Window; };
-struct MP_APPLICATION_CHATREMOVE        { ULONG MethodID; Object *Window; };
-struct MP_APPLICATION_CHATFINDACTIVE    { ULONG MethodID; };
+struct MP_APPLICATION_CHATSETACTIVE     { STACKED ULONG MethodID; STACKED Object *Window; };
+struct MP_APPLICATION_CHATREMOVE        { STACKED ULONG MethodID; STACKED Object *Window; };
+struct MP_APPLICATION_CHATFINDACTIVE    { STACKED ULONG MethodID; };
 
-struct MP_APPLICATION_MESSAGERECEIVED   { ULONG MethodID; struct Server *Server;  char *ChannelName; ULONG Pen; char *Message; };
-struct MP_APPLICATION_CHANNELADD        { ULONG MethodID; struct Channel *Channel; };
-struct MP_APPLICATION_CHANNELREMOVE     { ULONG MethodID; struct Channel *Channel; };
-struct MP_APPLICATION_CHANNELNICKADD    { ULONG MethodID; struct Channel *Channel; struct ChatNickEntry *ChatNickEntry; };
-struct MP_APPLICATION_CHANNELNICKREMOVE { ULONG MethodID; struct Channel *Channel; struct ChatNickEntry *ChatNickEntry; };
-struct MP_APPLICATION_CHANNELISVISIBLE  { ULONG MethodID; struct Channel *Channel; Object *IgnoreWindowChat; };
+struct MP_APPLICATION_MESSAGERECEIVED   { STACKED ULONG MethodID; STACKED struct Server *Server;  STACKED char *ChannelName; STACKED ULONG Pen; STACKED char *Message; };
+struct MP_APPLICATION_CHANNELADD        { STACKED ULONG MethodID; STACKED struct Channel *Channel; };
+struct MP_APPLICATION_CHANNELREMOVE     { STACKED ULONG MethodID; STACKED struct Channel *Channel; };
+struct MP_APPLICATION_CHANNELNICKADD    { STACKED ULONG MethodID; STACKED struct Channel *Channel; STACKED struct ChatNickEntry *ChatNickEntry; };
+struct MP_APPLICATION_CHANNELNICKREMOVE { STACKED ULONG MethodID; STACKED struct Channel *Channel; STACKED struct ChatNickEntry *ChatNickEntry; };
+struct MP_APPLICATION_CHANNELISVISIBLE  { STACKED ULONG MethodID; STACKED struct Channel *Channel; STACKED Object *IgnoreWindowChat; };
 
 
 /*

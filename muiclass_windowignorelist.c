@@ -150,7 +150,7 @@ static IPTR OM_Get(struct IClass *cl, Object *obj, struct opGet *msg )
 static IPTR MM_DisEnable( struct IClass *cl, Object *obj, Msg *msg )
 {
 struct mccdata *mccdata = INST_DATA( cl, obj );
-LONG pos;
+IPTR pos;
 BOOL disabled = TRUE;
 
 	GetAttr( MUIA_NList_Active, mccdata->mcc_ClassObjects[ GID_LIST ], (IPTR*) &pos );

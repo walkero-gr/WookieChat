@@ -98,7 +98,7 @@ struct TagItem *tag;
 struct TagItem *tstate;
 
 	for( tstate = msg->ops_AttrList ; ( tag = NextTagItem( &tstate ) ) ; ) {
-		ULONG tidata = tag->ti_Data;
+		IPTR tidata = tag->ti_Data;
         switch( tag->ti_Tag ) {
 			case MA_AUDIO_OBJECTSETTINGS:
 				mccdata->mcc_ClassObjects[ WID_SETTINGS ] = (APTR) tidata;

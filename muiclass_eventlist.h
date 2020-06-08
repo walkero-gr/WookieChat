@@ -27,7 +27,7 @@ MM_EVENTLIST_ADD =  0xFED00900,
 /* Attributes */
 };
 
-struct MP_EVENTLIST_ADD { ULONG MethodID; ULONG Type; ULONG Mode; STRPTR Script; STRPTR Text; };
+struct MP_EVENTLIST_ADD { STACKED ULONG MethodID; STACKED ULONG Type; STACKED ULONG Mode; STACKED STRPTR Script; STACKED STRPTR Text; };
 
 /*************************************************************************/
 

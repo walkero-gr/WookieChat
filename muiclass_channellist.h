@@ -32,8 +32,8 @@ MM_CHANNELLIST_PENSUPDATE,
 /* Attributes */
 };
 
-struct MP_CHANNELLIST_ADD    { ULONG MethodID; APTR ServerEntry; STRPTR Channel; STRPTR Password; };
-struct MP_CHANNELLIST_REMOVE { ULONG MethodID; APTR ChannelEntry; };
+struct MP_CHANNELLIST_ADD    { STACKED ULONG MethodID; STACKED APTR ServerEntry; STACKED STRPTR Channel; STACKED STRPTR Password; };
+struct MP_CHANNELLIST_REMOVE { STACKED ULONG MethodID; STACKED APTR ChannelEntry; };
 
 /*************************************************************************/
 

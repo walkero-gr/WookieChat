@@ -33,8 +33,8 @@ MM_SETTINGSEVENT_LISTTOGADGETS,
 /* Attributes */
 };
 
-struct MP_SETTINGSEVENT_READCONFIG { ULONG MethodID; ULONG ObjectID; };
-struct MP_SETTINGSEVENT_ADD        { ULONG MethodID; STRPTR Event; };
+struct MP_SETTINGSEVENT_READCONFIG { STACKED ULONG MethodID; STACKED ULONG ObjectID; };
+struct MP_SETTINGSEVENT_ADD        { STACKED ULONG MethodID; STACKED STRPTR Event; };
 
 /*************************************************************************/
 

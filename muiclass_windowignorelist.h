@@ -32,7 +32,7 @@ MM_WINDOWIGNORELIST_CHECKIGNORE,
 /* Attributes */
 };
 
-struct MP_WINDOWIGNORELIST_CHECKIGNORE { ULONG MethodID; STRPTR Nick; STRPTR HostName; ULONG Type; };
+struct MP_WINDOWIGNORELIST_CHECKIGNORE { STACKED ULONG MethodID; STACKED STRPTR Nick; STACKED STRPTR HostName; STACKED ULONG Type; };
 
 /*************************************************************************/
 

@@ -200,9 +200,9 @@ ULONG col[ 4 ];
 
 /*************************************************************************/
 
-ULONG MUIGetVar( Object *obj, ULONG attr )
+IPTR MUIGetVar( Object *obj, ULONG attr )
 {
-ULONG var = 0;
+IPTR var = 0;
 	GetAttr( attr, obj, (void*) &var );
 	return ( var );
 }
@@ -443,8 +443,8 @@ APTR MUICreateCycle( ULONG text, APTR labels, ULONG first, ULONG last )
                                         MUIA_Font          , MUIV_Font_Button,
 										MUIA_ControlChar   , MUIGetKeyLocale( text ),
                                         MUIA_CycleChain    , 1,
-										MUIA_ShortHelp     , (ULONG) LGS( text + 1 ),
-										MUIA_Cycle_Entries , (ULONG) labels,
+										MUIA_ShortHelp     , (IPTR) LGS( text + 1 ),
+										MUIA_Cycle_Entries , (IPTR) labels,
 										TAG_DONE ) );
 }
 /* \\\ */
@@ -468,8 +468,8 @@ ULONG length = strlen( TAB_FIXWIDTH );
 					MUIA_Slider_Level                           , def,
 					MUIA_Slider_Max                             , max,
 					MUIA_Slider_Min                             , min,
-					(format ? MUIA_Numeric_Format : TAG_IGNORE ), ( format ? (ULONG) LGS( format ) : (ULONG) 0 ),
-					MUIA_ShortHelp                              , (ULONG) LGS( text + 1 ),
+					(format ? MUIA_Numeric_Format : TAG_IGNORE ), ( format ? (IPTR) LGS( format ) : (IPTR) 0 ),
+					MUIA_ShortHelp                              , (IPTR) LGS( text + 1 ),
 					(fix    ? MUIA_FixWidthTxt    : TAG_IGNORE ), &TAB_FIXWIDTH[ fix ],
 					MUIA_CycleChain                             , 1,
 					End );
@@ -555,14 +555,14 @@ Object *obj, *dummy;
 
 	if( ( obj = MUI_NewObject( MUIC_Popasl,
                                          MUIA_CycleChain       , 1,
-										 MUIA_ShortHelp , (ULONG) Locale_GetString( text + 1 ),
-										 MUIA_Popstring_String , (ULONG) (*strobj = MUI_NewObject( MUIC_String, MUIA_Frame, MUIV_Frame_String,
+										 MUIA_ShortHelp , (IPTR) Locale_GetString( text + 1 ),
+										 MUIA_Popstring_String , (IPTR) (*strobj = MUI_NewObject( MUIC_String, MUIA_Frame, MUIV_Frame_String,
 																 MUIA_ControlChar, MUIGetKeyLocale( text ),
                                                                  MUIA_String_MaxLen, maxchars,
 																 TAG_DONE ) ),
-										 MUIA_Popstring_Button , (ULONG) ( dummy = PopButton(poptype) ),
+										 MUIA_Popstring_Button , (IPTR) ( dummy = PopButton(poptype) ),
 
-										 taglist ? TAG_MORE : TAG_DONE, (ULONG) taglist ) ) ) {
+										 taglist ? TAG_MORE : TAG_DONE, (IPTR) taglist ) ) ) {
 
 		SetAttrs( dummy, MUIA_ControlChar, MUIGetKeyLocaleUpper( text ), MUIA_CycleChain, 1, TAG_DONE );
     }
@@ -610,11 +610,11 @@ IPTR NewObjectAROS( struct IClass *classPtr, UBYTE *classID, ULONG tag1, ... )
     retval = (IPTR) NewObject(classPtr, classID, AROS_SLOWSTACKTAGS_ARG(tag1));
     AROS_SLOWSTACKTAGS_POST
 }
-IPTR DoSuperNew(struct IClass *cl, Object *obj, ULONG tag1, ...)
+IPTR DoSuperNew(Class *cl, Object *obj, Tag tag1, ...)
 {
-    AROS_SLOWSTACKTAGS_PRE(tag1)
-    retval = (IPTR)DoSuperMethod(cl, obj, OM_NEW, AROS_SLOWSTACKTAGS_ARG(tag1));
-    AROS_SLOWSTACKTAGS_POST
+    AROS_SLOWSTACKMETHODS_PRE(tag1)
+    retval = (IPTR)DoSuperNewTagList(cl, obj, NULL, (struct TagItem *)AROS_SLOWSTACKMETHODS_ARG(tag1));
+    AROS_SLOWSTACKMETHODS_POST
 }
 #endif
 

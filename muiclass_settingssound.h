@@ -30,7 +30,7 @@ MM_SETTINGSSOUND_DISENABLE,
 /* Attributes */
 };
 
-struct MP_SETTINGSSOUND_READCONFIG { ULONG MethodID; ULONG ObjectID; };
+struct MP_SETTINGSSOUND_READCONFIG { STACKED ULONG MethodID; STACKED ULONG ObjectID; };
 
 /*************************************************************************/
 

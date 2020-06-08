@@ -60,17 +60,17 @@ struct ConfigItem {
 	ULONG GadgetID;
 	ULONG ObjectID;
 	ULONG Attr;
-	LONG  Default;
+	IPTR  Default;
 };
 
 static struct ConfigItem TAB_CONFIGITEMS[] = {
-	{ GID_ACTIVEPUBLIC      , OID_LOG_ACTIVEPUBLIC     , MUIA_Selected      ,  (LONG) 1    },
-	{ GID_ACTIVEPRIVATE     , OID_LOG_ACTIVEPRIVATE    , MUIA_Selected      ,  (LONG) 1    },
-	{ GID_RECOVERPUBLIC     , OID_LOG_RECOVERPUBLIC    , MUIA_String_Integer,  (LONG) 40   },
-	{ GID_RECOVERPRIVATE    , OID_LOG_RECOVERPRIVATE   , MUIA_String_Integer,  (LONG) 40   },
-	{ GID_SPLIT             , OID_LOG_SPLIT            , MUIA_Selected      ,  (LONG) 1    },
-	{ GID_SPLITLIMIT        , OID_LOG_SPLITLIMIT       , MUIA_String_Integer,  (LONG) 1024 },
-	{ GID_PATH              , OID_LOG_PATH             , MUIA_String_Contents, (LONG) DEFAULT_LOGPATH },
+	{ GID_ACTIVEPUBLIC      , OID_LOG_ACTIVEPUBLIC     , MUIA_Selected      ,  (IPTR) 1    },
+	{ GID_ACTIVEPRIVATE     , OID_LOG_ACTIVEPRIVATE    , MUIA_Selected      ,  (IPTR) 1    },
+	{ GID_RECOVERPUBLIC     , OID_LOG_RECOVERPUBLIC    , MUIA_String_Integer,  (IPTR) 40   },
+	{ GID_RECOVERPRIVATE    , OID_LOG_RECOVERPRIVATE   , MUIA_String_Integer,  (IPTR) 40   },
+	{ GID_SPLIT             , OID_LOG_SPLIT            , MUIA_Selected      ,  (IPTR) 1    },
+	{ GID_SPLITLIMIT        , OID_LOG_SPLITLIMIT       , MUIA_String_Integer,  (IPTR) 1024 },
+	{ GID_PATH              , OID_LOG_PATH             , MUIA_String_Contents, (IPTR) DEFAULT_LOGPATH },
 	{ -1,0,0,0 },
 };
 

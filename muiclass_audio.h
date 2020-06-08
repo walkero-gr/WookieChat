@@ -28,7 +28,7 @@ MM_AUDIO_PLAY =  0xFED00300,
 MA_AUDIO_OBJECTSETTINGS,
 };
 
-struct MP_AUDIO_PLAY    { ULONG MethodID; ULONG SID; char *Name; };
+struct MP_AUDIO_PLAY    { STACKED ULONG MethodID; STACKED ULONG SID; STACKED char *Name; };
 
 /*************************************************************************/
 

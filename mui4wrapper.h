@@ -95,23 +95,23 @@
 
 #undef  MUIM_NList_Display
 #define	MUIM_NList_Display MUIM_List_Display
-struct  MUIP_NList_Display            { ULONG MethodID; APTR entry; STRPTR *strings; };
+struct  MUIP_NList_Display            { STACKED ULONG MethodID; STACKED APTR entry; STACKED STRPTR *strings; };
 
 #undef  MUIM_NList_Compare
 #define MUIM_NList_Compare MUIM_List_Compare
-struct  MUIP_NList_Compare            { ULONG MethodID; APTR entry1; APTR entry2; LONG sort_type1; LONG sort_type2; };		/* $$$Sensei */
+struct  MUIP_NList_Compare            { STACKED ULONG MethodID; STACKED APTR entry1; STACKED APTR entry2; STACKED LONG sort_type1; STACKED LONG sort_type2; };		/* $$$Sensei */
 
 #undef  MUIM_NList_Construct
 #define MUIM_NList_Construct MUIM_List_Construct
-struct  MUIP_NList_Construct          { ULONG MethodID; APTR entry; APTR pool; };														/* $$$Sensei */
+struct  MUIP_NList_Construct          { STACKED ULONG MethodID; STACKED APTR entry; STACKED APTR pool; };														/* $$$Sensei */
 
 #undef  MUIM_NList_Destruct
 #define MUIM_NList_Destruct MUIM_List_Destruct
-struct  MUIP_NList_Destruct           { ULONG MethodID; APTR entry; APTR pool; };														/* $$$Sensei */
+struct  MUIP_NList_Destruct           { STACKED ULONG MethodID; STACKED APTR entry; STACKED APTR pool; };														/* $$$Sensei */
 
 #undef  MUIM_NList_Sort
 #define	MUIM_NList_Sort MUIM_List_Sort
-struct  MUIP_NList_Sort            { ULONG MethodID; };
+struct  MUIP_NList_Sort            { STACKED ULONG MethodID; };
 
 #undef  MUIM_NList_NextSelected
 #define MUIM_NList_NextSelected MUIM_List_NextSelected

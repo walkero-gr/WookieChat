@@ -75,7 +75,7 @@ void  MUIClass_Close( void );
 
 ULONG MUIPenSpecToRGB( Object *obj, struct MUI_PenSpec *penspec );
 
-ULONG MUIGetVar( Object *obj, ULONG attr );
+IPTR MUIGetVar( Object *obj, ULONG attr );
 void  MUIInitStringArray( STRPTR array[], ULONG first, ULONG last );
 char  MUIGetKeyLocale( ULONG text );
 char  MUIGetKeyLocaleUpper( ULONG text );
@@ -115,8 +115,8 @@ void                MUIDataspaceExportPoppen( Object *poppen, Object *dataspace,
 */
 
 #ifdef __AROS__
-IPTR NewObjectAROS( struct IClass *classPtr, UBYTE *classID, ULONG tag1, ... );
-IPTR DoSuperNew(struct IClass *cl, Object *obj, ULONG tag1, ...);
+IPTR NewObjectAROS( struct IClass *classPtr, UBYTE *classID, Tag tag1, ... );
+IPTR DoSuperNew(struct IClass *cl, Object *obj, Tag tag1, ...);
 #define NEWOBJECT   (Object *)NewObjectAROS
 #else
 #define NEWOBJECT   NewObject
