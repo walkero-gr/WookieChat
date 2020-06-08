@@ -334,7 +334,7 @@ STRPTR toolstring;
 #elif defined( __amigaos4__)
 		if( ( toolstring = (_ub_cs) FindToolType( (STRPTR *) o->do_ToolTypes, (_ub_cs) tooltype ) ) ) {
 #else
-		if( ( toolstring = (_ub_cs) FindToolType( (const STRPTR *) o->do_ToolTypes, (const STRPTR) tooltype ) ) ) {
+		if( ( toolstring = (STRPTR) FindToolType( (const STRPTR *) o->do_ToolTypes, (const STRPTR) tooltype ) ) ) {
 #endif
 			return( ( (!Stricmp( toolstring, (_ub_cs) "YES" ) ) || ( !Stricmp( toolstring, (STRPTR) "ON" ) ) || (!Stricmp( toolstring, (STRPTR) "TRUE" ) ) ) ? TRUE : FALSE );
 		}

@@ -127,7 +127,7 @@ static char displayport[10];
 		sprintf( displayport, (char*) "%ld", se->se_Port );
 		*array++ = (STRPTR) se->se_Name;
 		*array++ = (STRPTR) displayport;
-		*array++ = (STRPTR) ( se->se_Flags & SERVERENTRYF_AUTOCONNECT ) ? LGS( MSG_LV_YES ) : LGS( MSG_LV_NO );
+		*array++ = (STRPTR) ( ( se->se_Flags & SERVERENTRYF_AUTOCONNECT ) ? LGS( MSG_LV_YES ) : LGS( MSG_LV_NO ) );
 		*array++ = (STRPTR) se->se_Charset;
 	} else {
 		*array++ = (STRPTR) LGS( MSG_LV_SERVER  );
@@ -312,16 +312,16 @@ struct NickEntry *ne;
 				args[3] = (IPTR) se->se_Password;
 				args[4] = (IPTR) se->se_Charset;
 				args[5] = (IPTR) ( ( se->se_Flags & SERVERENTRYF_AUTOCONNECT ) ? " CONNECT" : "" );
-				VFPrintf( handle, (_ub_cs)  "SERVER \"%s\" ADDRESS \"%s\" PORT %ld PASSWORD \"%s\" CHARSET \"%s\"%s\n", &args );
+				VFPrintf( handle, (_ub_cs)  "SERVER \"%s\" ADDRESS \"%s\" PORT %ld PASSWORD \"%s\" CHARSET \"%s\"%s\n", (RAWARG)args );
 				for( ce = (APTR) se->se_ChannelList.lh_Head ; ce->ce_Succ ; ce = ce->ce_Succ ) {
 					args[0] = (IPTR) ce->ce_Name;
 					args[1] = (IPTR) ce->ce_Password;
-					VFPrintf( handle, (_ub_cs)  "CHANNEL \"%s\" PASSWORD \"%s\"\n", &args );
+					VFPrintf( handle, (_ub_cs)  "CHANNEL \"%s\" PASSWORD \"%s\"\n", (RAWARG)args );
 				}
 				for( ne = (APTR) se->se_NickList.lh_Head ; ne->ne_Succ ; ne = ne->ne_Succ ) {
 					args[0] = (IPTR) ne->ne_Name;
 					args[1] = (IPTR) ne->ne_Password;
-					VFPrintf( handle, (_ub_cs)  "NICK \"%s\" PASSWORD \"%s\"\n", &args );
+					VFPrintf( handle, (_ub_cs)  "NICK \"%s\" PASSWORD \"%s\"\n", (RAWARG)args );
 				}
 			} else {
 	            break;
