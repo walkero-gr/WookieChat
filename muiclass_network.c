@@ -453,9 +453,7 @@ IPTR result;
 
 					listen( (int) s->s_IdentSocket, (int) 5 );
 				}
-				if( IoctlSocket( s->s_ServerSocket, FIONBIO, (char*) &on) >= 0 ) {
-					result = MSG_ERROR_NOERROR; /* invalid socket */
-				}
+				result = MSG_ERROR_NOERROR;
 			}
 		}
     }
@@ -531,11 +529,15 @@ IPTR result;
 
 				result = MSG_ERROR_NOERROR + 6; /* socket error */
 				if ( connect( s->s_ServerSocket, (struct sockaddr*) &addr, sizeof( struct sockaddr ) ) == 0 ) {
-					s->s_State = SVRSTATE_CONNECTED;
+					ULONG on = 1;
+					if( IoctlSocket( s->s_ServerSocket, FIONBIO, (char*) &on) >= 0 ) {
 
-					DoMethod( obj, MM_NETWORK_SERVERMESSAGESENDMSG, s, NULL, "/HELLO" );
+						s->s_State = SVRSTATE_CONNECTED;
 
-					result = MSG_ERROR_NOERROR;
+						DoMethod( obj, MM_NETWORK_SERVERMESSAGESENDMSG, s, NULL, "/HELLO" );
+
+						result = MSG_ERROR_NOERROR;
+					}
 				}
 				return( result );
 
