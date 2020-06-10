@@ -176,7 +176,9 @@ ULONG i;
 				if( ( s = (APTR) DoMethod( obj, MM_NETWORK_SERVERALLOC, se ) ) ) {
 					if( ( s->s_State != SVRSTATE_CONNECTED ) ) {
 						DoMethod( obj, MM_NETWORK_SERVERCONNECT , s );
-						DoMethod( obj, MM_NETWORK_SERVERLOGIN   , s );
+						if( ( s->s_State == SVRSTATE_CONNECTED ) ) {
+							DoMethod( obj, MM_NETWORK_SERVERLOGIN   , s );
+						}
 					}
 				}
 			}
@@ -204,6 +206,8 @@ ULONG i;
 	debug( "%s (%ld) %s() - Class: 0x%08lx Object: 0x%08lx \n", __FILE__, __LINE__, __func__, cl, obj );
 
 	if( ( buffer = AllocVec( COMMAND_COMPOSEBUFFER_SIZEOF, MEMF_ANY ) ) ) {
+
+		DoMethod( _app(obj), MM_APPLICATION_MESSAGERECEIVED, s, "", PEN_LOGNOTICE, "Connected. Logging...");
 
 		n = (APTR) s->s_NickList.lh_Head;
 		if( n->n_Succ ) {
@@ -530,6 +534,7 @@ IPTR result;
 				memset( &( addr.sin_zero ), '\0', 8 );
 
 				result = MSG_ERROR_NOERROR + 6; /* socket error */
+				DoMethod( _app(obj), MM_APPLICATION_MESSAGERECEIVED, s, "", PEN_LOGNOTICE, "Connecting...");
 				if ( connect( s->s_ServerSocket, (struct sockaddr*) &addr, sizeof( struct sockaddr ) ) == 0 ) {
 					ULONG on = 1;
 					if( IoctlSocket( s->s_ServerSocket, FIONBIO, (char*) &on) >= 0 ) {
