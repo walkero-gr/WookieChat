@@ -141,7 +141,7 @@ IPTR rc;
 		mccdata->mcc_EventHandlerNode.ehn_Events = (IDCMP_RAWKEY);
 		mccdata->mcc_EventHandlerNode.ehn_Object = obj;
 		mccdata->mcc_EventHandlerNode.ehn_Class  = cl;
-		DoMethod( obj, MUIM_Window_AddEventHandler, &mccdata->mcc_EventHandlerNode );
+		DoMethod( _win(obj), MUIM_Window_AddEventHandler, &mccdata->mcc_EventHandlerNode );
 
 
 	}
