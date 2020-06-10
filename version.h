@@ -18,10 +18,10 @@
 /***************************************************************************/
 
 #define VERSION  3
-#define REVISION 0
-#define DAY      27
+#define REVISION 1
+#define DAY      08
 #define MONTH    06
-#define YEAR     2013
+#define YEAR     2020
 
 #define APPLICATIONNAME "WookieChat"
 #define AUTHORNAME "WookieChat Team"
