@@ -522,6 +522,23 @@ static ULONG IRCCMD_ChannelModeIs( Object *obj, struct Server *s, struct ServerM
 }
 /* \\\ */
 
+/* /// IRCCMD_ReplyISupport()
+**
+*/
+
+/*************************************************************************/
+
+static ULONG IRCCMD_ReplyISupport( Object *obj, struct Server *s, struct ServerMessageParse *smp )
+{
+	/* specification says that JOIN might not be accepted until server
+	** finishes registration which is marked by 005 message
+	*/
+	DoMethod( obj, MM_NETWORK_SERVERAUTOJOIN, s );
+
+	return( IRCCMD_GenericServer( obj, s, smp ) );
+}
+/* \\\ */
+
 /* /// IRCCommands
 */
 
@@ -546,6 +563,7 @@ struct IRCCommands TAB_IRCCOMMANDS[] =
 	{ "376",        "NC",    IRCCMD_MOTDEnd                   },
 	{ "324",        "NC",    IRCCMD_ChannelModeIs             },
 //	  { "433",        "NC",    IRCCMD_ErrNickInUse              },
+	{ "005",        "",    IRCCMD_ReplyISupport               },
 	{ NULL, NULL, NULL },
 };
 /* \\\ */
