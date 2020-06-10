@@ -141,6 +141,7 @@ struct Server {
 
 };
 
+#define SERVERF_AUTOJOINSENT    1  /* mark if auto join has alredy been executed for server */
 
 struct Channel {
 	struct Channel    *c_Succ;

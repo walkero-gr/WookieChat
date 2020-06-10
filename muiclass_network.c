@@ -177,7 +177,6 @@ ULONG i;
 					if( ( s->s_State != SVRSTATE_CONNECTED ) ) {
 						DoMethod( obj, MM_NETWORK_SERVERCONNECT , s );
 						DoMethod( obj, MM_NETWORK_SERVERLOGIN   , s );
-						DoMethod( obj, MM_NETWORK_SERVERAUTOJOIN, s );
 					}
 				}
 			}
@@ -238,7 +237,8 @@ struct Channel *c;
 char *buffer;
 
 	debug( "%s (%ld) %s() - Class: 0x%08lx Object: 0x%08lx \n", __FILE__, __LINE__, __func__, cl, obj );
-
+	if( s->s_Flags & SERVERF_AUTOJOINSENT )
+		return ( 0 );
 	if( ( buffer = AllocVec( COMMAND_COMPOSEBUFFER_SIZEOF, MEMF_ANY ) ) ) {
 		for( c = (APTR) s->s_ChannelList.lh_Head ; c->c_Succ ; c = c->c_Succ ) {
 			if( !( c->c_Flags & CHANNELF_SERVER ) ) { /* server tab is no real channel */
@@ -252,6 +252,7 @@ char *buffer;
 		}
 		FreeVec( buffer );
 	}
+	s->s_Flags |= SERVERF_AUTOJOINSENT;
 	return( 0 );
 }
 /* \\\ */
@@ -485,6 +486,7 @@ struct Server *s;
 			s->s_IdentSocket = -1;
 		}
 		s->s_State        = SVRSTATE_NOTCONNECTED;
+		s->s_Flags        = 0;
 		s->s_BufferFilled = 0;
 	}
 	return( 0 );
