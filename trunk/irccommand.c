@@ -73,6 +73,8 @@ static void Dump_SMP( struct ServerMessageParse *smp)
 
 static ULONG IRCCMD_PrivMsg( Object *obj, struct Server *s, struct ServerMessageParse *smp )
 {
+struct Channel *c;
+
 	if( *smp->smp_Message == 1 ) {
 		char *newmsg;
 		char *msg = &smp->smp_Message[ strlen( smp->smp_Message ) - 1 ];
@@ -126,6 +128,16 @@ static ULONG IRCCMD_PrivMsg( Object *obj, struct Server *s, struct ServerMessage
 			}
 		}
 	} else {
+		/* if it is our nick, then add channel */
+		if( GRCO( obj, OID_GEN_OPENQUERY ) ) {
+			if( !Stricmp( (_ub_cs) smp->smp_Arguments, (_ub_cs) s->s_CurrentNick ) ) {
+				/* MM_NETWORK_CHANNELALLOC takes care that there are no dupe channels */
+				if( ( c = (APTR) DoMethod( obj, MM_NETWORK_CHANNELALLOC, s, smp->smp_Channel, 0 ) ) ) {
+					DoMethod( _app(obj), MM_APPLICATION_CHANNELADD, c );
+				}
+			}
+		}
+
 		smp->smp_Pen = PEN_LOGPRIVMSG;
 		sprintf( &smp->smp_MessageBuffer[ strlen( smp->smp_MessageBuffer ) ],
 				GRCO( obj, OID_GUI_NICKLISTREMCHARS ) ? "%s %s" : "<%s> %s",

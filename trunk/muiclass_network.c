@@ -823,6 +823,19 @@ ULONG i;
 				} else {
 //					  debug("has no argument pattern defined\n");
 				}
+
+				/* Special case for handling private messages */
+				if( !Stricmp( smp->smp_Command, "PRIVMSG" ) ) {
+					/* if channel is not a channel, but nick */
+					if( smp->smp_Channel[0] != '#' ) {
+						/* if FromNick is there (so not a local echo) */
+						if ( Stricmp( smp->smp_FromNick, "" ) ) {
+							/* then senders nick becomes channel name */
+							smp->smp_Channel = smp->smp_FromNick;
+						}
+					}
+				}
+
 				break;
 			}
 		}
