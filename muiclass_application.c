@@ -231,22 +231,6 @@ struct mccdata *mccdata = INST_DATA( cl, obj );
 	return( 0 );
 }
 /* \\\ */
-/* /// MM_Application_Load()
-**
-*/
-
-/*************************************************************************/
-
-static IPTR MM_Application_Load( struct IClass *cl, Object *obj, Msg msg )
-{
-ULONG rc = DoSuperMethodA( cl, obj, (Msg) msg );
-//struct mccdata *mccdata = INST_DATA( cl, obj );
-
-//	  DoMethod( mccdata->mcc_ClassObjects[ WID_CHAT ], MM_WINDOWCHAT_COLORCHANGE );
-
-	return( rc );
-}
-/* \\\ */
 /* /// MM_WindowFind()
 **
 ** Check if a window object still exists. This should never fail
@@ -648,9 +632,6 @@ DISPATCHER(MCC_Application_Dispatcher)
 		case OM_DISPOSE                         : return( OM_Dispose             ( cl, obj, (APTR) msg ) );
 
 		case OM_GET                             : return( OM_Get                 ( cl, obj, (APTR) msg ) );
-
-		case MUIM_Application_Load              : return( MM_Application_Load    ( cl, obj, (APTR) msg ) );
-		case MUIM_Application_Save              : return( MM_Application_Load    ( cl, obj, (APTR) msg ) );
 
 		case MM_APPLICATION_STARTUP             : return( MM_Startup             ( cl, obj, (APTR) msg ) );
 		case MM_APPLICATION_WINDOWFIND          : return( MM_WindowFind          ( cl, obj, (APTR) msg ) );
