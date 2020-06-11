@@ -570,6 +570,8 @@ Object *obj, *dummy;
 }
 /* \\\ */
 
+#define OID_PERSPENSPEC (1050)
+
 /* /// MUIDataspaceImportPoppen()
 **
 */
@@ -579,8 +581,9 @@ Object *obj, *dummy;
 struct MUI_PenSpec *MUIDataspaceImportPoppen( Object *poppen, Object *dataspace, ULONG objectid )
 {
 struct MUI_PenSpec *penspec;
+ULONG persobjectid = objectid + OID_PERSPENSPEC - OID_SETTINGSCOLOR;
 
-	if( ( penspec = (struct MUI_PenSpec *) DoMethod( dataspace, MUIM_Dataspace_Find, objectid ) ) ) {
+	if( ( penspec = (struct MUI_PenSpec *) DoMethod( dataspace, MUIM_Dataspace_Find, persobjectid ) ) ) {
 		SetAttrs( poppen, MUIA_Pendisplay_Spec, penspec, TAG_DONE );
 	}
 	return( penspec );
@@ -595,9 +598,10 @@ struct MUI_PenSpec *penspec;
 void MUIDataspaceExportPoppen( Object *poppen, Object *dataspace, ULONG objectid )
 {
 struct MUI_PenSpec *penspec;
+ULONG persobjectid = objectid + OID_PERSPENSPEC - OID_SETTINGSCOLOR;
 
 	if( ( penspec = (struct MUI_PenSpec *) MUIGetVar( poppen, MUIA_Pendisplay_Spec ) ) ) {
-		DoMethod( dataspace, MUIM_Dataspace_Add, penspec, sizeof( struct MUI_PenSpec ), objectid );
+		DoMethod( dataspace, MUIM_Dataspace_Add, penspec, sizeof( struct MUI_PenSpec ), persobjectid );
 	}
 }
 /* \\\ */
